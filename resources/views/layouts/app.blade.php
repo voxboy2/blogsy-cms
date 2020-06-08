@@ -88,7 +88,7 @@
             <ul class = "list-group">
             @if(auth()->user()->isAdmin())
             <li class = "list-group-item">
-            <a href="{{ route('users.index') }}">Users</a>
+            <a href="{{ route('admin.users.index') }}">Users</a>
             </li>
             @endif
             <li class = "list-group-item">
@@ -99,6 +99,16 @@
             </li>
             <li class = "list-group-item">
             <a href="{{ route('tags.index')}}">Tags</a>
+            </li>
+
+            @if(auth()->user()->isAdmin())
+            <li class = "list-group-item">
+            <a href="{{ route('user.create')}}">New user</a>
+            </li>
+
+            @endif
+            <li class = "list-group-item">
+            <a href="{{ route('user.profile')}}">Your Profile</a>
             </li>
             </ul>
 

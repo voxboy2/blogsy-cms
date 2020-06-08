@@ -13,9 +13,12 @@ class UserController extends Controller
 
         return view('home', ['users'=> $users]);
     }
+
+
+    
 }
 
-
+ 
 $users = DB::table('users')
 ->orderBy('name', 'desc')
 ->get();

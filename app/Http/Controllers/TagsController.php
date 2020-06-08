@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Tag;
 use App\Post;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class TagsController extends Controller
 
     public function index()
     {
-        return view('tags.index')->with('tags', Tag::all());
+        return view('admin.tags.index')->with('tags', Tag::all());
     }
 
     /**
@@ -30,7 +31,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-        return view('tags.create');
+        return view('admin.tags.create');
     }
 
     /**
@@ -45,6 +46,7 @@ class TagsController extends Controller
         Tag::create([
             'name' => $request->name
         ]);
+        
         session()->flash('success', 'Tag created successfully');
         
         return redirect(route('tags.index'));
@@ -69,7 +71,7 @@ class TagsController extends Controller
      */
     public function edit(Tag $tag)
     {
-        return view('tags.create')->with('tag', $tag);
+        return view('admin.tags.create')->with('tag', $tag);
     }
 
     /**
@@ -79,7 +81,7 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoriesRequest $request, Tag $Tag)
+    public function update(UpdateTagsRequest $request, Tag $tag)
     {
         $tag->update([         
             'name' => $request->name
@@ -98,13 +100,6 @@ class TagsController extends Controller
      */
     public function destroy(Tag $tag)
         {
-            if($tag->posts->count() > 0) {
-            
-                session()->flash('error', 'Tag cannot be deleted because it has some posts associated with it');
-    
-                return redirect()->back();
-            }
-    
             $tag->delete();
     
             session()->flash('success', 'Tag deleted successfully');

@@ -12,7 +12,8 @@ class PostsController extends Controller
 {
     public function show(Post $post)
     {
-       return view('blog.show')->with('post', $post);
+       $posts = Post::get()->sortByDesc('view_count')->take(5);
+       return view('blog.show', compact('posts'))->with('post', $post);
     }
 
     public function category(Category $category)
