@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('back_end/css/main.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('back_end/css/font-awesome/4.7.0/css/font-awesome.min.css') }}"/>
 
-    @yield('styles')
+    @yield('css')
 </head>   
 <body class="app sidebar-mini rtl">
 

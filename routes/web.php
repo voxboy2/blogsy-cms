@@ -47,7 +47,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function() {
 
     Route::get('/user/profile', 'ProfilesController@index')->name('user.profile');
 
-    Route::get('/user/delete/{id}', 'UsersController@delete')->name('user.profile.delete');
+    Route::get('logout', 'UsersController@logout')->name('logout');
+
 
     Route::post('/user/profile/update', 'ProfilesController@update')->name('user.profile.update');
 
@@ -66,6 +67,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function (){
     Route::post('/user/store', 'UsersController@store')->name('user.store');
     Route::post('users/make-admin/{id}', 'UsersController@makeAdmin')->name('users.make-admin');
     Route::post('users/not-admin/{id}', 'UsersController@not_Admin')->name('users.not-admin');
+    Route::get('/user/delete/{id}', 'UsersController@destroy')->name('user.profile.delete');
+
     Route::post('/settings/update', 'SettingsController@update')->name('settings.update');
     Route::get('/settings', 'SettingsController@index')->name('settings');
 

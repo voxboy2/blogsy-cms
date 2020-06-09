@@ -90,7 +90,7 @@ class ProfilesController extends Controller
             $avatar->move('storage/avatars', $avatar_new_name);
 
 
-            $user->profile->avatar = 'uploads/avatars' . $avatar_new_name;
+            $user->profile->avatar = 'storage/avatars' . $avatar_new_name;
 
             $user->profile->save();
 

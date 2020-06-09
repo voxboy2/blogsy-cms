@@ -16,6 +16,7 @@
 
 <th>Name</th>
 <th>Posts Count</th>
+<th>actions</th>
 
 
 
@@ -36,10 +37,7 @@
 
 <td>
 <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm">Edit</a>
-</td>
 
-
-<td>
 
 <button class="btn btn-danger  btn-sm" onclick="handleDelete({{ $category->id }})" >
 Delete 
@@ -86,12 +84,12 @@ Delete
 
 
 @section('scripts')
-
+ m
 
 <script>
 function handleDelete(id) {
     var form = document.getElementById('deleteCategoryForm')
-    form.action = '/categories/' + id
+    form.action = 'categories/' + id
     $('#deleteModal').modal('show')
 }
 </script>

@@ -20,9 +20,8 @@
 <th>Image</th>
 <th>Name</th>
 <th>Email</th>
-<th>Permissions</th>
-<th>delete</th>
 <th>actions</th>
+<th>Permissions</th>
 <th>status</th>
 
 
@@ -34,7 +33,8 @@
 
 <td>
 
-<img src="{{ asset($user->profile->avatar) }}" alt="Card image cap">
+<img src="{{ asset($user->profile->avatar) }}" alt="" width="60px" height="60px" style="border-radius: 50%;">
+
 
 </td>
 
@@ -53,15 +53,11 @@ permissions
 
 </td>
 
-<td>
- 
- delete
 
-</td>
 
 <td>
 
-@if(auth()->user()->isAdmin())
+@if($user->admin)
 
 <form action="{{ route('users.not-admin', $user->id) }}" method="POST">
 @csrf

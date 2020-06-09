@@ -16,6 +16,7 @@
 
 <th>Name</th>
 <th>Posts Count</th>
+<th>Actions</th>
 
 
 
@@ -35,9 +36,6 @@
 
 <td>
 <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-info btn-sm">Edit</a>
-</td>
-
-<td>
 
 <button class="btn btn-danger  btn-sm" onclick="handleDelete({{ $tag->id }})" >
 Delete 
@@ -84,7 +82,7 @@ Delete
 <script>
 function handleDelete(id) {
     var form = document.getElementById('deleteTagForm')
-    form.action = '/tags/' + id
+    form.action = 'tags/' + id
     $('#deleteModal').modal('show')
 }
 </script>

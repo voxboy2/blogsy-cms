@@ -34,9 +34,17 @@
         </div>
 
       
+        <!-- @if(auth()->user())
 
+
+        <a class="btn btn-xs btn-round btn-success" href="{{ route('logout') }}">Log out</a></div>
+
+
+        @else
         <a class="btn btn-xs btn-round btn-success" href="{{ route('login') }}">Log in</a>
 
+        @endif -->
+        
       </div>
     </nav><!-- /.navbar -->
 

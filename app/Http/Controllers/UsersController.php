@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Session;
 use App\User;
 use App\Profile;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -20,6 +21,8 @@ class UsersController extends Controller
 
     public function makeAdmin($id)
     {
+        $user = User::find($id);
+
         $user->admin = 1;
 
         $user->save();
@@ -28,6 +31,13 @@ class UsersController extends Controller
         
 
         return redirect(route('users.index'));
+    }
+
+
+    public function logout(Request $request){
+            Auth::guard()->logout();
+            $request->session()->invalidate();
+            return redirect('/');
     }
 
 
@@ -61,12 +71,15 @@ class UsersController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'admin' => 0,
             'password' => bcrypt('password')
         ]);
 
 
         $profile = Profile::create([
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'avatar' => 'storage/avatars/avatar.png',
+
 
         ]);
 
