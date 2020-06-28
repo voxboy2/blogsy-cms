@@ -6,7 +6,8 @@
 <div class="card-header">Edit your profile</div>
 <div class="card-body">
 
-@include('partials.errors')
+@include('flash')
+
 <form action="{{ route('user.profile.update') }}" method="POST">
 @csrf
 

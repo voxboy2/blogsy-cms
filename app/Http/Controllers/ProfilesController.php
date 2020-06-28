@@ -74,6 +74,7 @@ class ProfilesController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
+            'about' => 'required',
             'facebook' => 'required|url',
             'youtube' => 'required|url',
         ]);
@@ -98,6 +99,8 @@ class ProfilesController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->profile->about = $request->about;
+
         $user->profile->facebook = $request->facebook;
         $user->profile->youtube = $request->youtube;
 

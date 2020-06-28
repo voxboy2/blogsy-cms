@@ -8,6 +8,7 @@ use App\Http\Requests\Posts\UpdatePostRequest;
 use App\Post;
 use App\Tag;
 use App\Category;
+use Session;
 
 
 class PostsController extends Controller

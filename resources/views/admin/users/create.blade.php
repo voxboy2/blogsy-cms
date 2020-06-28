@@ -6,7 +6,7 @@
 <div class="card-header">Create User</div>
 <div class="card-body">
 
-@include('partials.errors')
+@include('flash')
 <form action="{{ route('user.store') }}" method="POST">
 @csrf
 
